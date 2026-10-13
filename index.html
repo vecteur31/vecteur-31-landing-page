@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="fr"
+class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+    <title>Vecteur 31 - La preuve numérique
+mathématiquement inattaquable</title>
+    
+    <!-- SEO Local -->
+    <meta name="description"
+content="Vecteur 31 : Experts en preuves numériques, inspection
+technique aérienne, captations classiques et scellés
+cryptographiques eIDAS à Toulouse et en Occitanie. Protection contre
+les sinistres et litiges web.">
+    <meta name="keywords"
+content="Preuve numérique, Inspection technique, Toulouse,
+Occitanie, eIDAS, Constat aérien, Preuve Web, Avocat Toulouse,
+Glossaire technique">
+    
+    <!-- Analytics Souverain (Plausible) -->
+    <script defer data-domain="vecteur31.fr"
+src="https://plausible.io/js/script.js"></script>
+
+
+    <script
+src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0B132B',
+                        steel: '#4A5568',
+                        copper: '#D97706',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-navy text-white font-sans
+antialiased selection:bg-copper selection:text-white flex flex-col
+min-h-screen">
+
+
+    <!-- HEADER / NAVIGATION PRINCIPALE -->
+    <header class="relative
+overflow-hidden min-h-screen flex flex-col justify-center
+items-center px-6 border-b border-steel/30 bg-gradient-to-b from-navy
+to-slate-950 w-full">
+        <!-- Navigation bar interne -->
+        <nav class="absolute top-0 left-0
+right-0 z-20 max-w-7xl mx-auto px-6 py-6 flex justify-between
+items-center">
+            <div class="flex items-center
+gap-3">
+                <span class="font-bold
+text-lg tracking-wider bg-clip-text text-transparent bg-gradient-to-r
+from-white to-slate-400">VECTEUR 31</span>
+            </div>
+            <div class="flex items-center
+gap-6 text-sm font-medium">
+                <a href="#moyens"
+class="hover:text-copper transition">Moyens</a>
+                <a href="#glossaire"
+class="hover:text-copper transition">Glossaire</a>
+                <!-- Lien direct vers la maquette dans un nouvel onglet -->
+                <a href="Maquette Preuve Numérique Web.png" target="_blank" rel="noopener noreferrer"
+class="hover:text-copper transition">Ouvrir la maquette</a>
+                <a href="#contact-form"
+class="px-4 py-2 bg-copper/10 border border-copper/30 rounded-md
+text-copper hover:bg-copper hover:text-white transition">Initier
+un protocole</a>
+            </div>
+        </nav>
+
+
+        <div class="absolute inset-0
+bg-[linear-gradient(to_right,#4a556810_1px,transparent_1px),linear-gradient(to_bottom,#4a556810_1px,transparent_1px)]
+bg-[size:4rem_4rem]"></div>
+        
+        <!-- Vidéo Responsive (lg: pour cibler
+uniquement les écrans PC) -->
+        <div class="w-full max-w-5xl
+relative z-10 mt-28 mb-8 lg:mt-0 lg:absolute lg:top-24 lg:left-6
+lg:w-80">
+            <video controls class="w-full
+border border-steel/50 rounded-lg shadow-2xl bg-black">
+                <source
+src="assets/presentation.mp4" type="video/mp4">
+                Votre navigateur ne prend pas en
+charge la lecture de cette vidéo.
+            </video>
+        </div>
+
+
+        <div class="absolute bottom-6
+left-6 font-mono text-[10px] text-slate-600 select-none hidden
+md:block space-y-1">
+            <p>LOC: 43.6047° N, 1.4442° E
+// TOULOUSE_HQ</p>
+            <p>SHA-256:
+8f4e2a3c9b8d7a6e5f4c3b2a1f0e9d8c7b6a5f4e3d2c1b0a</p>
+            <p>PROTOCOL:
+EIDAS_TIMESTAMP_ON</p>
+        </div>
+
+
+        <div class="relative z-10
+max-w-5xl text-center space-y-8 px-4 mt-8 lg:mt-0">
+            <div class="inline-flex
+items-center gap-2 px-4 py-1 bg-copper/10 border border-copper/30
+rounded-full text-xs font-mono text-copper mx-auto">
+                <span class="w-2 h-2
+rounded-full bg-copper animate-pulse"></span>
+                Ancrage Probatoire Occitanie Actif
+            </div>
+            <h1 class="text-4xl
+md:text-6xl lg:text-7xl font-extrabold tracking-tight
+text-transparent bg-clip-text bg-gradient-to-r from-white
+via-slate-200 to-slate-400 leading-tight">
+                La preuve numérique<br
+class="hidden md:inline"> mathématiquement
+inattaquable.
+            </h1>
+            <p class="text-lg md:text-xl
+text-slate-400 max-w-3xl mx-auto font-light leading-relaxed">
+                Vecteur 31 transforme l'inspection
+technique en scellés cryptographiques eIDAS et automatise la
+génération de preuves pré-constituées.
+            </p>
+            <div class="pt-4 flex flex-col
+sm:flex-row gap-4 justify-center">
+                <a href="#fork"
+class="inline-flex items-center justify-center px-8 py-4
+text-base font-medium text-white bg-copper hover:bg-amber-700
+rounded-md transition duration-300
+shadow-[0_0_30px_rgba(217,119,6,0.3)]">
+                    Découvrir nos protocoles
+                </a>
+                <a
+href="mailto:info@vecteur31.fr" class="inline-flex
+items-center justify-center px-8 py-4 text-base font-medium
+text-white border border-steel/50 hover:bg-steel/20 rounded-md
+transition duration-300">
+                    Courriel direct
+info@vecteur31.fr
+                </a>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- SECTION PRINCIPALE / CIBLES -->
+    <main id="fork" class="py-24
+px-6 max-w-7xl mx-auto w-full">
+        <div class="grid md:grid-cols-2
+gap-8 lg:gap-12">
+            <div class="bg-slate-900/40
+border border-steel/30 rounded-2xl p-8 lg:p-10 space-y-6
+hover:border-copper/40 transition duration-300 flex flex-col
+justify-between shadow-xl">
+                <div class="space-y-4">
+                    <span class="text-xs
+font-semibold tracking-wider text-copper uppercase bg-copper/10 px-3
+py-1 rounded-full border border-copper/20">Accès
+Professionnels (B2B)</span>
+                    <h2 class="text-2xl
+lg:text-3xl font-bold">Experts du litige, Avocats, Directions
+Juridiques</h2>
+                    <p class="text-slate-400
+text-sm lg:text-base leading-relaxed">
+                        Sécurisez vos rapports
+d'expertise et vos actifs numériques avec une force probante
+absolue.
+                    </p>
+                </div>
+                <div class="space-y-3
+pt-8">
+                    <a href="#contact-form"
+class="block text-center text-sm font-semibold bg-steel
+text-white hover:bg-slate-600 py-3.5 rounded-md transition
+duration-200">
+                        Découvrir la Preuve
+Aérienne (Vecteur 31)
+                    </a>
+                    <a href="#contact-form"
+class="block text-center text-sm font-semibold border
+border-steel/50 hover:border-copper text-white hover:text-copper
+py-3.5 rounded-md transition duration-200">
+                        Activer la Preuve Web pour
+mon site
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="bg-slate-900/40
+border border-steel/30 rounded-2xl p-8 lg:p-10 space-y-6
+hover:border-copper/40 transition duration-300 flex flex-col
+justify-between shadow-xl">
+                <div class="space-y-4">
+                    <span class="text-xs
+font-semibold tracking-wider text-copper uppercase bg-copper/10 px-3
+py-1 rounded-full border border-copper/20">Accès
+Particuliers (B2C)</span>
+                    <h2 class="text-2xl
+lg:text-3xl font-bold">Propriétaires immobiliers &
+Épargnants</h2>
+                    <p class="text-slate-400
+text-sm lg:text-base leading-relaxed">
+                        Protégez votre bien
+immobilier et votre épargne face aux assurances et aux vices cachés.
+                    </p>
+                </div>
+                <div class="pt-8">
+                    <a href="#contact-form"
+class="block text-center text-sm font-semibold bg-white
+text-navy hover:bg-slate-200 py-3.5 rounded-md transition
+duration-200 shadow-md">
+                        Obtenir une assistance et
+défendre mes droits
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- NOUVELLE FENÊTRE : MOYENS &
+PROTOCOLES D'ACQUISITION -->
+    <section id="moyens" class="py-24
+bg-slate-950 text-white border-t border-steel/20 w-full">
+        <div class="max-w-7xl mx-auto
+px-6">
+            <div class="text-center mb-16
+space-y-4">
+                <span class="text-copper
+uppercase tracking-widest text-xs font-bold px-3 py-1 bg-copper/10
+rounded-full border border-copper/20">
+                    Fenêtre Moyens &
+Protocoles d'Acquisition
+                </span>
+                <h2 class="text-3xl
+md:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-white
+to-slate-400 bg-clip-text text-transparent">
+                    Nos Moyens d'Intervention en
+Occitanie
+                </h2>
+                <p class="text-slate-400
+max-w-2xl mx-auto text-sm lg:text-base font-light">
+                    La force d'une preuve
+numérique réside dans la rigueur de sa captation. Vecteur 31
+déploie une triple expertise d'acquisition.
+                </p>
+            </div>
+
+
+            <div class="grid grid-cols-1
+md:grid-cols-3 gap-8 lg:gap-10">
+                <!-- 1. Inspection Technique
+Aérienne -->
+                <div class="bg-slate-900/40
+border border-steel/20 p-8 rounded-2xl shadow-xl
+hover:border-copper/40 transition-all duration-300 flex flex-col
+justify-between">
+                    <div>
+                        <div class="w-12
+h-12 rounded-xl bg-copper/10 border border-copper/20 flex
+items-center justify-center text-xl mb-6 text-copper">🚁</div>
+                        <h3 class="text-xl
+font-bold text-white mb-3">Inspection Technique Aérienne</h3>
+                        <p
+class="text-slate-400 text-sm leading-relaxed mb-4 font-light">
+                            Utilisation de
+vecteurs aériens spécialisés (drones) pour réaliser des
+captations visuelles, thermographiques ou topographiques sur site
+(zones industrielles, chantiers, infrastructures).
+                        </p>
+                        <p
+class="text-slate-300 text-xs italic mb-4">
+                            Chaque vol est opéré
+dans le respect strict de la réglementation aérienne. Les flux sont
+immédiatement soumis à notre protocole de hachage.
+                        </p>
+                    </div>
+                    <div class="text-xs
+font-mono text-copper/50 pt-4 border-t border-steel/20">//
+Cas d'usage : Malfaçons, contrefaçon physique</div>
+                </div>
+
+
+                <!-- 2. Inspection Technique
+par Captations Classiques -->
+                <div class="bg-slate-900/40
+border border-steel/20 p-8 rounded-2xl shadow-xl
+hover:border-copper/40 transition-all duration-300 flex flex-col
+justify-between">
+                    <div>
+                        <div class="w-12
+h-12 rounded-xl bg-copper/10 border border-copper/20 flex
+items-center justify-center text-xl mb-6 text-copper">🖥️</div>
+                        <h3 class="text-xl
+font-bold text-white mb-3">Captations Classiques</h3>
+                        <p
+class="text-slate-400 text-sm leading-relaxed mb-4 font-light">
+                            Intervention ciblée
+sur postes informatiques, serveurs locaux ou environnements connectés
+pour auditer, archiver et extraire des données numériques non web.
+                        </p>
+                        <p
+class="text-slate-300 text-xs italic mb-4">
+                            Réalisée via la
+portabilité de notre solution VeriHash Pro (Ubuntu / Tailscale).
+Aucune donnée ne transite par des clouds tiers non souverains.
+                        </p>
+                    </div>
+                    <div class="text-xs
+font-mono text-copper/50 pt-4 border-t border-steel/20">//
+Cas d'usage : Concurrence déloyale interne, audits</div>
+                </div>
+
+
+                <!-- 3. Preuve Web pour Site
+Internet -->
+                <div class="bg-slate-900/40
+border border-steel/20 p-8 rounded-2xl shadow-xl
+hover:border-copper/40 transition-all duration-300 flex flex-col
+justify-between">
+                    <div>
+                        <div class="w-12
+h-12 rounded-xl bg-copper/10 border border-copper/20 flex
+items-center justify-center text-xl mb-6 text-copper">🌐</div>
+                        <h3 class="text-xl
+font-bold text-white mb-3">Preuve Web (Sites Internet)</h3>
+                        <p
+class="text-slate-400 text-sm leading-relaxed mb-4 font-light">
+                            Captation automatisée
+ou manuelle de pages web, sites e-commerce ou profils hébergeant des
+contenus illicites (contrefaçon, avis diffamatoires, parasitisme).
+                        </p>
+                        <p
+class="text-slate-300 text-xs italic mb-4">
+                            Scellé
+mathématiquement par une empreinte SHA-256 et un horodatage RFC 3161
+conforme à l'article 1366 du Code civil.
+                        </p>
+                    </div>
+                    <div class="text-xs
+font-mono text-copper/50 pt-4 border-t border-steel/20">//
+Cas d'usage : Figer une page web en moins de 15 min</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- NOUVELLE FENÊTRE : GLOSSAIRE &
+PROTOCOLES -->
+    <section id="glossaire"
+class="py-24 bg-navy text-white border-t border-steel/20
+w-full">
+        <div class="max-w-7xl mx-auto
+px-6">
+            <div class="text-center mb-16
+space-y-4">
+                <span class="text-copper
+uppercase tracking-widest text-xs font-bold px-3 py-1 bg-copper/10
+rounded-full border border-copper/20">
+                    Fenêtre Glossaire &
+Protocoles
+                </span>
+                <h2 class="text-3xl
+md:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-white
+to-slate-400 bg-clip-text text-transparent">
+                    Centre de Ressources
+Techniques & Juridiques
+                </h2>
+                <p class="text-slate-400
+max-w-2xl mx-auto text-sm lg:text-base font-light">
+                    Maîtrisez les notions
+fondamentales qui garantissent la solidité et la recevabilité de
+vos preuves numériques.
+                </p>
+            </div>
+
+
+            <div class="grid grid-cols-1
+md:grid-cols-2 gap-8">
+                <!-- Lexique Technique -->
+                <div class="bg-slate-900/40
+border border-steel/30 rounded-2xl p-8 space-y-6">
+                    <h3 class="text-xl
+font-bold text-copper border-b border-steel/30 pb-4">⚙️
+I. Le Lexique Technique</h3>
+                    <div class="space-y-4
+text-sm text-slate-300 font-light">
+                        <div>
+                            <strong
+class="text-white block mb-1">• SHA-256 (Fonction de
+Hachage) :</strong>
+                            Algorithme
+transformant un fichier web en une empreinte unique de 64 caractères
+(ADN inviolable). Toute modification altère instantanément
+l'empreinte.
+                        </div>
+                        <div>
+                            <strong
+class="text-white block mb-1">• RFC 3161 (Horodatage
+Qualifié) :</strong>
+                            Standard international
+liant une date et une heure exactes à une empreinte numérique via
+une autorité certifiée, annihilant toute contestation temporelle.
+                        </div>
+                        <div>
+                            <strong
+class="text-white block mb-1">• eIDAS-TLS :</strong>
+                            Cadre réglementaire
+européen garantissant la sécurité des transactions et
+communications électroniques de bout en bout.
+                        </div>
+                        <div>
+                            <strong
+class="text-white block mb-1">• VeriHash Pro
+:</strong>
+                            Solution logicielle
+souveraine et portable (Ubuntu / Tailscale) garantissant l'étanchéité
+des investigations sans transit par des clouds tiers.
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Lexique Juridique -->
+                <div class="bg-slate-900/40
+border border-steel/30 rounded-2xl p-8 space-y-6">
+                    <h3 class="text-xl
+font-bold text-copper border-b border-steel/30 pb-4">⚖️
+II. Le Lexique Juridique & Procédural</h3>
+                    <div class="space-y-4
+text-sm text-slate-300 font-light">
+                        <div>
+                            <strong
+class="text-white block mb-1">• Article 1366 du Code
+Civil :</strong>
+                            Confère à l'écrit
+électronique la même force probante qu'un support papier si son
+intégrité et l'identification de son émetteur sont garanties.
+                        </div>
+                        <div>
+                            <strong
+class="text-white block mb-1">• Preuve Pré-constituée
+:</strong>
+                            Élément préparé en
+amont d'un litige pour parer à la disparition rapide d'une
+information volatile sur le web.
+                        </div>
+                        <div>
+                            <strong
+class="text-white block mb-1">• Levée de Doute /
+Audit Préventif :</strong>
+                            Investigation
+technique préliminaire permettant au cabinet d'avocats de qualifier
+l'infraction avant d'assigner ou de mandater un huissier.
+                        </div>
+                        <div>
+                            <strong
+class="text-white block mb-1">• Commissaire de Justice
+(ex-Huissier) :</strong>
+                            Officier ministériel
+disposant du monopole des constats authentiques. Vecteur 31 est son
+allié technique amont pour préparer le terrain probatoire.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SECTION DOMAINES D'INTERVENTION -->
+    <section class="py-24 bg-slate-950
+text-white border-t border-steel/20 w-full">
+        <div class="max-w-7xl mx-auto
+px-6">
+            <div class="text-center mb-16
+space-y-4">
+                <span class="text-copper
+uppercase tracking-widest text-xs font-bold px-3 py-1 bg-copper/10
+rounded-full border border-copper/20">
+                    Tiers de Confiance
+Technologique
+                </span>
+                <h2 class="text-3xl
+md:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-white
+to-slate-400 bg-clip-text text-transparent">
+                    Nos Domaines d'Intervention en
+Occitanie
+                </h2>
+            </div>
+
+
+            <div class="grid grid-cols-1
+md:grid-cols-3 gap-8 lg:gap-10">
+                <div class="bg-slate-900/40
+border border-steel/20 p-8 rounded-2xl shadow-xl
+hover:border-copper/40 transition-all duration-300 flex flex-col
+justify-between">
+                    <div>
+                        <div class="w-12
+h-12 rounded-xl bg-copper/10 border border-copper/20 flex
+items-center justify-center text-xl mb-6 text-copper">🏛️</div>
+                        <h3 class="text-xl
+font-bold text-white mb-3">Structures & Sinistres</h3>
+                        <p
+class="text-slate-400 text-sm leading-relaxed mb-4 font-light">
+                            Analyse de toitures,
+façades et désordres structurels suite à des sinistres
+climatiques. Fixation de la preuve avant travaux.
+                        </p>
+                    </div>
+                    <div class="text-xs
+font-mono text-copper/50 pt-4 border-t border-steel/20">//
+Rapports opposables aux assurances</div>
+                </div>
+
+
+                <div class="bg-slate-900/40
+border border-steel/20 p-8 rounded-2xl shadow-xl
+hover:border-copper/40 transition-all duration-300 flex flex-col
+justify-between">
+                    <div>
+                        <div class="w-12
+h-12 rounded-xl bg-copper/10 border border-copper/20 flex
+items-center justify-center text-xl mb-6 text-copper">🚢</div>
+                        <h3 class="text-xl
+font-bold text-white mb-3">Droit Maritime & Fluvial</h3>
+                        <p
+class="text-slate-400 text-sm leading-relaxed mb-4 font-light">
+                            Inspection de coques
+de péniches et infrastructures sur le Canal du Midi et la Garonne.
+Constats de navigabilité.
+                        </p>
+                    </div>
+                    <div class="text-xs
+font-mono text-copper/50 pt-4 border-t border-steel/20">//
+Analyse conforme Voies Navigables</div>
+                </div>
+
+
+                <div class="bg-slate-900/40
+border border-steel/20 p-8 rounded-2xl shadow-xl
+hover:border-copper/40 transition-all duration-300 flex flex-col
+justify-between">
+                    <div>
+                        <div class="w-12
+h-12 rounded-xl bg-copper/10 border border-copper/20 flex
+items-center justify-center text-xl mb-6 text-copper">🏗️</div>
+                        <h3 class="text-xl
+font-bold text-white mb-3">Chantiers & Référés</h3>
+                        <p
+class="text-slate-400 text-sm leading-relaxed mb-4 font-light">
+                            Suivi d'avancement,
+constatations de non-conformités architecturales. Production de
+livrables certifiés.
+                        </p>
+                    </div>
+                    <div class="text-xs
+font-mono text-copper/50 pt-4 border-t border-steel/20">//
+Certifié eIDAS / Tiers de confiance</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SECTION FORMULAIRE DE CONTACT -->
+    <section id="contact-form"
+class="py-24 bg-slate-900/20 border-t border-steel/20 px-6
+w-full flex-grow">
+        <div class="max-w-3xl mx-auto
+space-y-8">
+            <div class="text-center
+space-y-2">
+                <h3 class="text-3xl
+font-bold">Initialiser un protocole</h3>
+            </div>
+
+
+            <!-- Bloc de réassurance ajouté
+-->
+            <div class="text-center mb-8">
+                <div class="flex
+justify-center items-center gap-6 text-slate-400 text-sm
+font-medium">
+                    <span class="flex
+items-center gap-2">✅ 100+ Dossiers traités en 2026</span>
+                    <span class="flex
+items-center gap-2">🛡️ Conformité eIDAS garantie</span>
+                </div>
+            </div>
+            
+            <form id="main-contact-form"
+action="https://formbold.com/s/3dJ4b" method="POST"
+class="bg-slate-900/80 border border-steel/30 rounded-2xl p-8
+lg:p-10 space-y-6 shadow-2xl">
+                <input type="hidden"
+name="_next" value="https://vecteur31.fr">
+
+
+                <div>
+                    <label class="block
+text-xs font-semibold uppercase tracking-wider text-slate-400
+mb-2">Vous êtes :</label>
+                    <select id="profile-select"
+name="vous_etes" required class="w-full bg-slate-950
+border border-steel/40 rounded-md px-4 py-3 text-white
+focus:outline-none focus:border-copper transition">
+                        <option value=""
+disabled selected>Choisir une option...</option>
+                        <option
+value="B2B">Expert / Avocat / Entreprise (B2B)</option>
+                        <option
+value="B2C">Particulier (B2C)</option>
+                    </select>
+                </div>
+
+
+                <div class="grid
+grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block
+text-xs text-slate-400 mb-1">Nom</label>
+                        <input type="text"
+name="nom" required class="w-full bg-slate-950 border
+border-steel/40 rounded-md px-4 py-2.5 text-white focus:outline-none
+focus:border-copper">
+                    </div>
+                    <div>
+                        <label class="block
+text-xs text-slate-400 mb-1">Prénom</label>
+                        <input type="text"
+name="prenom" required class="w-full bg-slate-950
+border border-steel/40 rounded-md px-4 py-2.5 text-white
+focus:outline-none focus:border-copper">
+                    </div>
+                </div>
+
+
+                <div>
+                    <label class="block
+text-xs text-slate-400 mb-1">Adresse Email</label>
+                    <input type="email"
+name="email" required class="w-full bg-slate-950
+border border-steel/40 rounded-md px-4 py-2.5 text-white
+focus:outline-none focus:border-copper">
+                </div>
+
+
+                <div>
+                    <label class="block
+text-xs text-slate-400 mb-1">Type de besoin</label>
+                    <select id="need-select"
+name="type_besoin" class="w-full bg-slate-950 border
+border-steel/40 rounded-md px-4 py-2.5 text-white focus:outline-none
+focus:border-copper">
+                        <option
+value="Inspection Vecteur 31" selected>Inspection
+Technique Aérienne (Vecteur 31)</option>
+                        <option
+value="inspection_technique_classique">Inspection
+technique par captation classique</option>
+                        <option value="Preuve
+Web">Preuve Web pour site internet</option>
+                    </select>
+                </div>
+
+
+                <div id="fields-b2b"
+class="hidden space-y-4 pt-4 border-t border-steel/20">
+                    <div>
+                        <label class="block
+text-xs text-slate-400 mb-1">Nom de la structure /
+SIRET</label>
+                        <input type="text"
+id="input-b2b-structure" data-name="details_contexte"
+class="w-full bg-slate-950 border border-steel/40 rounded-md
+px-4 py-2.5 text-white focus:outline-none focus:border-copper">
+                    </div>
+                    <div>
+                        <label class="block
+text-xs text-slate-400 mb-1">Description du litige ou du
+besoin de pré-constitution</label>
+                        <textarea
+id="textarea-b2b-desc" data-name="description_faits"
+rows="4" placeholder="Décrivez votre besoin ici..."
+class="w-full bg-slate-950 border border-steel/40 rounded-md
+px-4 py-2.5 text-white focus:outline-none
+focus:border-copper"></textarea>
+                    </div>
+                </div>
+
+
+                <div id="fields-b2c"
+class="hidden space-y-4 pt-4 border-t border-steel/20">
+                    <div>
+                        <label class="block
+text-xs text-slate-400 mb-1">Nature du problème</label>
+                        <select
+id="select-b2c-prob" data-name="details_contexte"
+class="w-full bg-slate-950 border border-steel/40 rounded-md
+px-4 py-2.5 text-white focus:outline-none focus:border-copper">
+                            <option
+value="Sinistre Assurance">Sinistre Assurance</option>
+                            <option value="Vice
+Caché Immobilier">Vice Caché Immobilier</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block
+text-xs text-slate-400 mb-1">Description des désordres
+constatés</label>
+                        <textarea
+id="textarea-b2c-desc" data-name="description_faits"
+rows="4" placeholder="Décrivez les faits ou vices
+constatés..." class="w-full bg-slate-950 border
+border-steel/40 rounded-md px-4 py-2.5 text-white focus:outline-none
+focus:border-copper"></textarea>
+                    </div>
+                </div>
+
+
+                <div class="pt-4">
+                    <button type="submit"
+class="w-full bg-copper hover:bg-amber-700 text-white font-bold
+py-4 rounded-md transition duration-200
+shadow-[0_0_20px_rgba(217,119,6,0.2)]">
+                        Transmettre le dossier au
+protocole
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950
+text-slate-500 text-xs py-8 border-t border-steel/20 w-full
+font-mono">
+        <div class="max-w-7xl mx-auto px-6
+flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center
+md:text-left">
+                <p>© 2026 Vecteur 31. Tous
+droits réservés.</p>
+                <p>Email : info@vecteur31.fr
+| Tél : 07-666-222-85</p>
+            </div>
+            <div class="flex gap-6">
+                <span>Conformité
+eIDAS</span>
+                <span>Ancrage Toulouse
+HQ</span>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- SCRIPT DE GESTION DU FORMULAIRE -->
+    <script>
+        const profileSelect =
+document.getElementById('profile-select');
+        const needSelect =
+document.getElementById('need-select');
+        const fieldsB2B =
+document.getElementById('fields-b2b');
+        const fieldsB2C =
+document.getElementById('fields-b2c');
+
+
+        const inputB2bStructure =
+document.getElementById('input-b2b-structure');
+        const textareaB2bDesc =
+document.getElementById('textarea-b2b-desc');
+        const selectB2cProb =
+document.getElementById('select-b2c-prob');
+        const textareaB2cDesc =
+document.getElementById('textarea-b2c-desc');
+
+
+        function updateFields() {
+            const val = profileSelect.value;
+            fieldsB2B.classList.add('hidden');
+            fieldsB2C.classList.add('hidden');
+           
+inputB2bStructure.removeAttribute('name');
+           
+textareaB2bDesc.removeAttribute('name');
+            selectB2cProb.removeAttribute('name');
+           
+textareaB2cDesc.removeAttribute('name');
+
+
+            if (val === 'B2B') {
+               
+fieldsB2B.classList.remove('hidden');
+                needSelect.innerHTML = `<option
+value="Inspection Vecteur 31" selected>Inspection
+Technique Aérienne (Vecteur 31)</option><option
+value="inspection_technique_classique">Inspection
+technique par captation classique</option><option
+value="Preuve Web">Preuve Web pour site
+internet</option>`;
+               
+inputB2bStructure.setAttribute('name', 'details_contexte');
+               
+textareaB2bDesc.setAttribute('name', 'description_faits');
+            } else if (val === 'B2C') {
+               
+fieldsB2C.classList.remove('hidden');
+                needSelect.innerHTML = `<option
+value="Inspection Vecteur 31" selected>Inspection
+Technique Aérienne (Vecteur 31)</option><option
+value="inspection_technique_classique">Inspection
+technique par captation classique</option>`;
+                selectB2cProb.setAttribute('name',
+'details_contexte');
+               
+textareaB2cDesc.setAttribute('name', 'description_faits');
+            }
+        }
+        profileSelect.addEventListener('change',
+updateFields);
+    </script>
+</body>
+</html>

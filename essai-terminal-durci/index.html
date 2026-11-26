@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<base href="/essai-terminal-durci/">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fiche d'essai sur terminal durci — VériHash Pro™</title>
+<meta name="description" content="Fiche d'essai de VériHash Pro™ sur terminal durci Android (Zebra, Honeywell, Datalogic…) : à remplir sur le quai et dans l'entrepôt, puis à renvoyer en un geste.">
+<link rel="icon" href="logos/web-verihash-pro.png">
+<style>
+  /* Fiche d'essai sur terminal durci : même maquette que les fiches iPhone et terminal durci, sans police externe */
+  :root {
+    --bg: #f3f6fb; --surface: #ffffff; --ink: #0f1d3a; --muted: #5a6b86; --line: #d7dfeb;
+    --accent: #0059b3; --cuivre: #a65a24; --ok: #0f8a5f; --ko: #c2362f; --na: #7a869b; --key: #fff4d6; --key-line: #e3b341;
+    --body: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) { :root {
+    --bg: #0b1329; --surface: #12203f; --ink: #e8eefb; --muted: #9fb0cc; --line: #2a3b62;
+    --accent: #4aa3ff; --ok: #34c88f; --ko: #ff7a70; --na: #8d9ab3; --key: #2b2610; --key-line: #b8902e; color-scheme: dark } }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.5; }
+  .wrap { max-width: 760px; margin: 0 auto; padding-block: 28px 64px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: flex; flex-direction: column; gap: 22px; }
+  h1 { font-size: 1.7rem; line-height: 1.2; margin: 0; text-wrap: balance; }
+  h2 { font-size: 1.05rem; margin: 0; text-wrap: balance; }
+  .eyebrow { font-family: var(--mono); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--cuivre); font-weight: 600; }
+  .lead { color: var(--muted); margin: 6px 0 0; max-width: 64ch; }
+  .lead b { color: var(--ink); }
+  .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+  label.f { display: flex; flex-direction: column; gap: 4px; font-size: .85rem; color: var(--muted); }
+  input, textarea, select { font: inherit; font-size: .95rem; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; width: 100%; }
+  input:focus, textarea:focus, select:focus, button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .progress { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; font-family: var(--mono); font-size: .85rem; font-variant-numeric: tabular-nums; }
+  .bar { flex: 1 1 160px; height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; }
+  .bar span { display: block; height: 100%; background: var(--accent); width: 0; transition: width .2s; }
+  ol.tests { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+  .partie { font-family: var(--mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding-top: 10px; border-top: 1px solid var(--line); }
+  .partie:first-child { padding-top: 0; border-top: 0; }
+  .test { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--line); border-radius: 8px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
+  .test.key { background: var(--key); border-color: var(--key-line); }
+  .test[data-state="ok"] { border-left-color: var(--ok); }
+  .test[data-state="ko"] { border-left-color: var(--ko); }
+  .test[data-state="na"] { border-left-color: var(--na); }
+  .head { display: flex; gap: 10px; align-items: baseline; }
+  .num { font-family: var(--mono); font-weight: 600; color: var(--accent); min-width: 2ch; }
+  .tag { font-family: var(--mono); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); border: 1px solid var(--key-line); border-radius: 4px; padding: 1px 6px; margin-left: auto; white-space: nowrap; }
+  .steps { margin: 0; padding-left: 1.2em; }
+  .expect { margin: 0; font-size: .92rem; color: var(--muted); }
+  .expect b { color: var(--ink); }
+  .choices { display: flex; flex-wrap: wrap; gap: 8px; }
+  .choices button { font: inherit; font-size: .95rem; padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); cursor: pointer; min-height: 40px; }
+  .choices button[aria-pressed="true"][data-v="ok"] { background: var(--ok); border-color: var(--ok); color: #fff; }
+  .choices button[aria-pressed="true"][data-v="ko"] { background: var(--ko); border-color: var(--ko); color: #fff; }
+  .choices button[aria-pressed="true"][data-v="na"] { background: var(--na); border-color: var(--na); color: #fff; }
+  .test textarea { min-height: 44px; resize: vertical; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .primary { font: inherit; font-weight: 700; padding: 10px 18px; border-radius: 8px; border: none; background: var(--accent); color: #fff; cursor: pointer; text-decoration: none; }
+  .second { font: inherit; font-weight: 700; padding: 10px 18px; border-radius: 8px; border: 1px solid var(--accent); background: transparent; color: var(--accent); cursor: pointer; }
+  .ghost { font: inherit; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer; }
+  #report { font-family: var(--mono); font-size: .8rem; min-height: 160px; }
+  .note { font-size: .88rem; color: var(--muted); margin: 0; }
+  a { color: var(--accent); }
+  code { font-family: var(--mono); font-size: .88em; overflow-wrap: anywhere; }
+  .marque { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .logo-vh { height: 56px; width: auto; border-radius: 4px; background: #fff; padding: 3px; }
+  .partenaires { display: flex; flex-wrap: wrap; gap: 20px 40px; align-items: flex-end; border-top: 1px solid var(--line); padding-top: 18px; }
+  .partenaires figure { margin: 0; display: grid; gap: 8px; }
+  .partenaires figcaption { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .partenaires .logos { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; background: #fff; border-radius: 6px; padding: 8px 12px; }
+  .partenaires img { height: 48px; width: auto; max-width: 100%; }
+  .partenaires img.large { height: 34px; }
+  @media (prefers-reduced-motion: reduce) { .bar span { transition: none; } }
+  /* Version papier : cases à cocher et remarques au stylo */
+  .papier { display: none; }
+  @page { size: A4; margin: 12mm; }
+  @media print {
+    :root { --bg: #fff; --surface: #fff; --ink: #000; --muted: #333; --line: #bbb; --key: #fff8e5; }
+    body { font-size: 12px; }
+    .wrap { padding: 0; gap: 12px; max-width: none; }
+    .progress, .ecran { display: none; }
+    .papier { display: flex; }
+    .partenaires, .test, .panel, .partie { break-inside: avoid; }
+    .partie { break-after: avoid; }
+    .choices button { min-height: 0; padding: 2px 10px; }
+    .choices button::before { content: "☐ "; }
+    .test textarea { min-height: 56px; }
+    input::placeholder, textarea::placeholder { color: transparent; }
+    #d-date { color: transparent; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="marque"><img class="logo-vh" src="logos/web-verihash-pro.png" alt="Logo VériHash Pro™"><div><strong>VériHash Pro™</strong><br><span class="note">la preuve photo souveraine</span></div></div>
+    <div class="eyebrow">Fiche d'essai · Terminal durci Android (Zebra, Honeywell, Datalogic…)</div>
+    <h1>Essai de VériHash Pro™ sur vos terminaux durcis</h1>
+    <p class="lead">Cette fiche vérifie, sur le quai et dans l'entrepôt, qu'un terminal professionnel convient à la preuve photo : appareil photo, GPS, douchette, réseau, gants. Suivez les contrôles dans l'ordre, touchez le résultat de chacun et notez ce qui vous surprend. À la fin, touchez <b>« Envoyer par e-mail »</b> : le compte rendu part vers info@vecteur31.fr.</p>
+    <p class="lead"><b>Il vous faut :</b> le terminal, un compte d'essai gratuit (10 preuves pendant 60 jours, cette fiche en utilise environ 7), un colis ou une étiquette à code-barres, un second téléphone pour scanner le QR code, et une heure environ.</p>
+    <p class="lead"><b>Terminal géré par le service informatique ?</b> La gestion de flotte peut bloquer certaines étapes (installation, appareil photo, micro). Notez alors le message exact : c'est une information utile, pas un échec de l'essai.</p>
+    <p class="lead">Vos réponses restent sur cet appareil : rien n'est envoyé tant que vous ne touchez pas « Envoyer par e-mail ».</p>
+  </header>
+
+  <section class="panel" aria-labelledby="t-device">
+    <h2 id="t-device">Votre site et votre terminal</h2>
+    <div class="grid">
+      <label class="f">Entreprise et site <input id="d-equipe" placeholder="ex. entrepôt de Toulouse, quai n° 2"></label>
+      <label class="f">Marque et modèle <input id="d-model" placeholder="ex. Zebra TC58, Zebra TC26, Honeywell CT45"></label>
+      <label class="f">Version d'Android <input id="d-android" placeholder="Paramètres → À propos du téléphone"></label>
+      <label class="f">Outil de gestion de flotte <input id="d-mdm" placeholder="ex. SOTI, StageNow, Intune, aucun"></label>
+      <label class="f">Réseau utilisé
+        <select id="d-reseau"><option value="">—</option><option>Wi-Fi de l'entrepôt</option><option>Réseau mobile (carte SIM)</option><option>Les deux</option><option>Je ne sais pas</option></select>
+      </label>
+      <label class="f">Adresse e-mail du compte d'essai <input id="d-email" type="email" placeholder="adresse utilisée pour se connecter"></label>
+      <label class="f">Date de l'essai <input id="d-date" type="date"></label>
+      <label class="f">Version de l'application <input id="d-version" placeholder="écrite tout en bas de l'écran"></label>
+    </div>
+    <p class="note">Les contrôles surlignés en jaune sont les plus importants. Les trois premiers disent en 10 minutes si le terminal convient.</p>
+  </section>
+
+  <div class="progress" aria-live="polite"><span id="count">0 / 0 contrôles</span><div class="bar"><span id="bar"></span></div><span id="tally"></span></div>
+
+  <ol class="tests" id="tests"></ol>
+
+  <section class="panel papier">
+    <h2>Renvoyer la fiche papier</h2>
+    <p class="note">Photographiez les pages remplies et envoyez-les à info@vecteur31.fr, avec deux ou trois attestations PDF. Version en ligne, plus simple : www.vecteur31.fr/essai-terminal-durci</p>
+  </section>
+
+  <section class="panel ecran" aria-labelledby="t-report">
+    <h2 id="t-report">Envoyer le compte rendu</h2>
+    <p class="note">Joignez si possible deux ou trois attestations PDF (onglet Dashboard) à l'e-mail. Si l'e-mail ne s'ouvre pas, copiez le compte rendu et collez-le dans un message à info@vecteur31.fr.</p>
+    <div class="actions">
+      <a class="primary" id="mail" href="mailto:info@vecteur31.fr">Envoyer par e-mail</a>
+      <button class="second" id="copy" type="button">Copier le compte rendu</button>
+      <button class="ghost" id="print" type="button">Imprimer la fiche</button>
+      <span id="copied" class="note" role="status"></span>
+    </div>
+    <textarea id="report" readonly aria-label="Compte rendu de l'essai"></textarea>
+    <div class="actions"><button class="ghost" id="reset" type="button">Tout effacer pour un autre terminal</button></div>
+  </section>
+
+  <section class="panel ecran">
+    <h2>Liens utiles</h2>
+    <p class="note">Application : <a href="https://verihash.vecteur31.fr/">verihash.vecteur31.fr</a> · Page de diagnostic photo : <a href="https://verihash.vecteur31.fr/diagnostic-photo.html">verihash.vecteur31.fr/diagnostic-photo.html</a> · Contact : <a href="mailto:info@vecteur31.fr">info@vecteur31.fr</a></p>
+  </section>
+
+  <section class="partenaires" aria-label="Accompagnement">
+    <figure><figcaption>Accompagné par</figcaption><div class="logos"><img src="logos/web-bge-sud-ouest.png" alt="BGE Sud-Ouest"></div></figure>
+    <figure><figcaption>Membre du Starter by La Mêlée</figcaption><div class="logos"><img src="logos/web-la-melee.png" alt="La Mêlée"><img class="large" src="logos/web-le-starter.png" alt="Le Starter, programme de pré-incubation de La Mêlée"></div></figure>
+  </section>
+</div>
+
+<script>
+// Entrées { p } = titre de partie (non numéroté) ; les autres sont des contrôles
+const TESTS = [
+  { p: "Partie 1 · Le terminal convient-il ? (10 min)" },
+  { t: "Navigateur Chrome", key: true, s: ["Cherchez l'application Chrome dans la liste des applications.", "Ouvrez Paramètres → Applications → Chrome et relevez sa version."], e: "Chrome est présent. S'il est absent (terminal sans services Google), notez le navigateur disponible, par exemple « Enterprise Browser » : l'installation de VériHash Pro™ ne sera probablement pas possible, inutile d'aller plus loin." },
+  { t: "Photo : page de diagnostic", key: true, s: ["Dans Chrome, ouvrez <code>verihash.vecteur31.fr/diagnostic-photo.html</code> (rien n'est envoyé).", "Prenez une photo d'un objet avec l'appareil photo proposé par la page.", "Recommencez en choisissant dans la galerie une photo prise il y a moins de 3 minutes avec l'appareil photo du terminal."], e: "La page indique que la photo serait <b>acceptée</b>, avec la marque, le modèle et la date de prise de vue. Recopiez la marque et le modèle affichés. Si elle est refusée, recopiez le message exact." },
+  { t: "Position GPS", key: true, s: ["Activez la localisation dans les paramètres rapides.", "Allez à l'extérieur ou près d'une fenêtre et ouvrez Google Maps (ou une autre carte)."], e: "Votre position apparaît en moins d'une minute. Si elle n'est jamais trouvée, le modèle n'a peut-être pas de GPS (certaines versions « Wi-Fi seulement ») : notez-le." },
+
+  { p: "Partie 2 · L'application" },
+  { t: "Installation sur l'écran d'accueil", s: ["Dans Chrome, ouvrez <code>verihash.vecteur31.fr</code>.", "Menu ⋮ → « Installer l'application » ou « Ajouter à l'écran d'accueil »."], e: "L'icône VériHash Pro™ apparaît. Ouverte depuis l'icône, l'application occupe tout l'écran, sans barre d'adresse. Si le menu est absent ou grisé, la gestion de flotte l'interdit peut-être : notez-le." },
+  { t: "Connexion par le code à 6 chiffres", s: ["Ouvrez l'application depuis l'icône.", "Saisissez votre e-mail et demandez la connexion.", "Saisissez le code à 6 chiffres reçu par e-mail (lu au besoin sur un autre appareil)."], e: "Vous êtes connecté dans l'application installée." },
+  { t: "Photo prise directement", key: true, s: ["Onglet Sceller → bouton 📷 Photo Directe.", "Prenez la photo d'un colis ou d'un objet et validez."], e: "La photo est acceptée et son empreinte s'affiche. Sinon, recopiez le message exact." },
+  { t: "Douchette dans le constat", key: true, s: ["Touchez la case Constat pour y placer le curseur.", "Appuyez sur la gâchette (ou le bouton de scan) et visez le code-barres d'un colis ou d'une étiquette."], e: "Le numéro du code-barres s'écrit dans la case, sans caractère manquant ni doublé. Si rien n'apparaît, le service informatique doit activer la sortie clavier du scanner (Zebra : DataWedge → profil → « Keystroke output » ; Honeywell et Datalogic : « keyboard wedge »)." },
+  { t: "Dictée vocale", s: ["Dans la case Constat, touchez « 🎙️ Dictée Vocale ».", "Autorisez le micro si demandé, puis parlez quelques secondes."], e: "Le texte dicté apparaît à la suite du code scanné. Sinon, recopiez le message affiché (la dictée a besoin des services Google)." },
+  { t: "IA Vision (facultatif)", s: ["Si le bouton d'analyse IA est visible, touchez-le avec une photo choisie.", "Au premier usage, le modèle (~430 Mo) se télécharge : restez en Wi-Fi et notez la durée."], e: "Un constat en français est proposé. Notez la durée totale. Si l'IA est trop lente sur ce terminal, elle peut être masquée pour toute l'équipe : ce n'est pas bloquant." },
+  { t: "Scellement complet", key: true, s: ["Avec la photo et le constat (code scanné compris), touchez le bouton d'envoi.", "Ouvrez l'onglet Dashboard puis l'attestation créée."], e: "Message « Scellement réussi ». Dans l'attestation PDF, le constat contient bien le numéro scanné, et la position GPS est indiquée." },
+  { t: "QR code de vérification", s: ["Affichez l'attestation PDF à l'écran.", "Scannez son QR code « Scanner pour vérifier la preuve » avec un autre téléphone."], e: "La page de vérification s'ouvre avec « ✅ Preuve enregistrée », les heures et la position « Enregistrée »." },
+  { t: "Comparaison des coordonnées GPS", s: ["Sur le terminal, ouvrez la page de vérification (QR code de vérification, ou lien de l'attestation).", "Sous « Vous avez l'attestation PDF ? », recopiez la latitude et la longitude de la ligne « Position du terminal » du PDF dans les deux cases, puis touchez « 📍 Comparer les coordonnées ».", "Changez un chiffre (par exemple la 3e décimale) et comparez de nouveau."], e: "« ✅ Coordonnées conformes », puis « ❌ Coordonnées différentes », sans que la position enregistrée ne s'affiche. Notez si le clavier du terminal permet de saisir le point, la virgule et le signe moins (10 essais par jour et par scellé)." },
+
+  { p: "Partie 3 · Conditions de terrain" },
+  { t: "Avec des gants", s: ["Mettez les gants de travail habituels.", "Faites un scellement : boutons, onglets, case Constat."], e: "Les boutons se touchent sans erreur. Notez ceux qui sont trop petits ou trop proches." },
+  { t: "En extérieur, en plein jour", s: ["Ouvrez l'application dehors, écran face à la lumière."], e: "Les textes et les boutons restent lisibles. Notez ce qui ne se lit pas." },
+  { t: "Réseau sur le quai et dans l'entrepôt", key: true, s: ["Au quai de réception ou d'expédition, scellez la photo d'un colis ou d'une palette avec le réseau habituel du terminal (Wi-Fi de l'entrepôt ou réseau mobile).", "Recommencez au fond de l'entrepôt, entre deux rayonnages."], e: "La preuve part dans les 3 minutes et l'attestation porte la mention « VALIDÉ ». Notez les zones où le réseau manque et le délai d'envoi." },
+  { t: "Sans réseau", s: ["Activez le mode Avion en laissant la localisation allumée.", "Scellez une nouvelle photo, puis ouvrez le Dashboard.", "Dans les 3 minutes après la photo, désactivez le mode Avion et rouvrez l'application."], e: "Message « Pas de réseau : preuve gardée dans le téléphone », puis encadré orange « En attente d'envoi ». Au retour du réseau, le scellé est envoyé seul." },
+  { t: "Sans réseau, retour après plus de 3 minutes", s: ["Recommencez le contrôle précédent, mais attendez 5 minutes avant de désactiver le mode Avion."], e: "La preuve est envoyée seule au retour du réseau. L'attestation indique le délai réel entre la photo et l'envoi : notez la mention affichée. Ce contrôle dit si les opérateurs doivent envoyer depuis le quai ou peuvent attendre une zone couverte." },
+  { t: "Après la veille ou un changement de batterie", s: ["Mettez le terminal en veille 10 minutes (ou changez la batterie s'il le permet).", "Rouvrez l'application depuis l'icône."], e: "Vous êtes toujours connecté et vos scellés sont visibles dans le Dashboard." }
+];
+const LABELS = { ok: "Réussi", ko: "Échec", na: "Non testé" };
+const KEY = 'vh-essai-terminal-durci';
+const FIELDS = ['d-equipe', 'd-model', 'd-android', 'd-mdm', 'd-reseau', 'd-email', 'd-date', 'd-version'];
+const CONTROLES = TESTS.filter(x => !x.p);
+let state = {};
+try { state = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { state = {}; }
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} };
+
+const list = document.getElementById('tests');
+const items = [];
+let n = 0;
+TESTS.forEach(x => {
+  const li = document.createElement('li');
+  if (x.p) { li.className = 'partie'; li.textContent = x.p; list.appendChild(li); return; }
+  const i = n++;
+  li.className = 'test' + (x.key ? ' key' : '');
+  li.innerHTML = `<div class="head"><span class="num">${i + 1}</span><h2>${x.t}</h2>${x.key ? '<span class="tag">Important</span>' : ''}</div>
+    <ol class="steps">${x.s.map(s => `<li>${s}</li>`).join('')}</ol>
+    <p class="expect"><b>Attendu :</b> ${x.e}</p>
+    <div class="choices" role="group" aria-label="Résultat du contrôle ${i + 1}">
+      ${Object.entries(LABELS).map(([v, l]) => `<button type="button" data-v="${v}" aria-pressed="false">${l}</button>`).join('')}
+    </div>
+    <textarea id="note-${i}" placeholder="Remarques, message exact, délai, précision…" aria-label="Remarques sur le contrôle ${i + 1}"></textarea>`;
+  li.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
+    state['r' + i] = state['r' + i] === b.dataset.v ? undefined : b.dataset.v;
+    save(); render();
+  }));
+  li.querySelector('textarea').addEventListener('input', ev => { state['n' + i] = ev.target.value; save(); buildReport(); });
+  list.appendChild(li);
+  items.push(li);
+});
+FIELDS.forEach(id => {
+  const el = document.getElementById(id);
+  if (state[id]) el.value = state[id];
+  const maj = () => { state[id] = el.value; save(); buildReport(); };
+  el.addEventListener('input', maj); el.addEventListener('change', maj);
+});
+if (!state['d-date']) document.getElementById('d-date').valueAsDate = new Date();
+
+function buildReport() {
+  const v = id => document.getElementById(id).value || '—';
+  const lines = [`ESSAI SUR TERMINAL DURCI — VériHash Pro™`,
+    `Site : ${v('d-equipe')}`,
+    `Terminal : ${v('d-model')} | Android : ${v('d-android')} | Gestion de flotte : ${v('d-mdm')} | Réseau : ${v('d-reseau')}`,
+    `Compte : ${v('d-email')} | Date : ${v('d-date')} | Version : ${v('d-version')}`, ''];
+  CONTROLES.forEach((x, i) => {
+    const r = state['r' + i];
+    lines.push(`${i + 1}. ${x.t} : ${r ? LABELS[r].toUpperCase() : 'à faire'}${state['n' + i] ? `\n   → ${state['n' + i].replace(/\n/g, ' ')}` : ''}`);
+  });
+  const texte = lines.join('\n');
+  document.getElementById('report').value = texte;
+  const sujet = `Essai VériHash Pro™ sur terminal durci — ${v('d-model')} — ${v('d-equipe')}`;
+  document.getElementById('mail').href = `mailto:info@vecteur31.fr?subject=${encodeURIComponent(sujet)}&body=${encodeURIComponent(texte)}`;
+}
+function render() {
+  let done = 0, ok = 0, ko = 0;
+  items.forEach((li, i) => {
+    const r = state['r' + i];
+    li.dataset.state = r || '';
+    li.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === r)));
+    const ta = li.querySelector('textarea'); if (document.activeElement !== ta) ta.value = state['n' + i] || '';
+    if (r) done++; if (r === 'ok') ok++; if (r === 'ko') ko++;
+  });
+  document.getElementById('count').textContent = `${done} / ${CONTROLES.length} contrôles`;
+  document.getElementById('bar').style.width = (done / CONTROLES.length * 100) + '%';
+  document.getElementById('tally').textContent = `${ok} réussi(s) · ${ko} échec(s)`;
+  buildReport();
+}
+document.getElementById('copy').addEventListener('click', () => {
+  const ta = document.getElementById('report'), msg = document.getElementById('copied');
+  const fallback = () => { ta.focus(); ta.select(); msg.textContent = 'Texte sélectionné : utilisez « Copier ».'; };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(ta.value).then(() => { msg.textContent = 'Compte rendu copié.'; }, fallback);
+  } else fallback();
+});
+document.getElementById('print').addEventListener('click', () => window.print());
+let armed = false;
+document.getElementById('reset').addEventListener('click', ev => {
+  if (!armed) { armed = true; ev.target.textContent = 'Confirmer l\'effacement'; setTimeout(() => { armed = false; ev.target.textContent = 'Tout effacer pour un autre terminal'; }, 4000); return; }
+  const garder = { 'd-equipe': state['d-equipe'] };
+  state = garder; save(); armed = false; ev.target.textContent = 'Tout effacer pour un autre terminal';
+  FIELDS.filter(id => !(id in garder) && id !== 'd-date').forEach(id => document.getElementById(id).value = '');
+  document.getElementById('d-date').valueAsDate = new Date();
+  render();
+});
+render();
+</script>
+</body>
+</html>
